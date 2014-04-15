@@ -12,6 +12,24 @@ def hello(request):
     return HttpResponse("Hello World")
 
 
+def display_meta(request):
+    values = request.META.items()
+    values.sort()
+    html = []
+    for k, v in values:
+        html.append("""
+            <tr>
+                <td>%s</td>
+                <td>%s</td>
+            </tr>
+        """ % (k, v))
+    return HttpResponse("""
+        <table>
+            %s
+        </table>
+    """ % '\n'.join(html))
+
+
 def current_datetime(request):
     now = datetime.now()
     # Cap 4. (1º)

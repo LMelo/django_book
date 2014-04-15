@@ -3,7 +3,8 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 admin.autodiscover()
 
-from views import hello, current_datetime, hours_ahead
+from views import hello, display_meta, current_datetime, hours_ahead
+from books.views import search
 
 
 urlpatterns = patterns('',
@@ -16,4 +17,6 @@ urlpatterns = patterns('',
     url(r'^time/$', current_datetime),
     url(r'^another-time-page/$', current_datetime),
     url(r'^time/plus/(\d{1,2})/$', hours_ahead),
+    url(r'^display_meta/$', display_meta),
+    url(r'search/$', search),
 )
